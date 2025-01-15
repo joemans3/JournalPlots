@@ -20,6 +20,11 @@ cd journalplots
 pip install .
 ```
 
+or use PyPI package:
+```bash
+pip install JournalPlots
+```
+
 ## Usage
 
 ### Basic Usage
