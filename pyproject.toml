@@ -1,5 +1,5 @@
 [project]
-name = "journalplots_BP"
+name = "journalplots"
 version = "0.1.0"
 description = "A package for consistent journal-ready matplotlib plotting styles"
 authors = [
