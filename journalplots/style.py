@@ -14,6 +14,7 @@ COLORS = {
     "gray": "#BBBBBB",  # Gray
 }
 
+# https://gist.github.com/thriveth/8560036
 COLORBLIND_COLORS = {
     "blue": "#377eb8",
     "orange": "#ff7f00",
@@ -25,6 +26,7 @@ COLORBLIND_COLORS = {
     "red": "#e41a1c",
     "yellow": "#dede00",
 }
+
 # Standard sizes for different figure elements
 SIZES = {
     "figure": (6, 4),  # Standard figure size in inches

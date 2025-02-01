@@ -14,7 +14,7 @@ Features:
 - Consistent figure dimensions
 """
 
-from .style import COLORS, SIZES, apply_style, set_style
+from .style import COLORBLIND_COLORS, SIZES, apply_style, set_style
 
 __version__ = "0.1.1"
 __author__ = "Baljyot Singh Parmar"
@@ -23,6 +23,6 @@ __email__ = "baljyotparmar@hotmail.com"
 __all__ = [
     "set_style",
     "apply_style",
-    "COLORS",
+    "COLORBLIND_COLORS",
     "SIZES",
 ]
