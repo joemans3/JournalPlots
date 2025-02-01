@@ -5,7 +5,10 @@ description = "A package for consistent journal-ready matplotlib plotting styles
 authors = [
 	{ name = "Baljyot Singh Parmar", email = "baljyotparmar@hotmail.com" },
 ]
-dependencies = ["matplotlib>=3.0.0"]
+dependencies = [
+    "cycler>=0.12.1",
+    "matplotlib>=3.0.0",
+]
 requires-python = ">=3.8"
 readme = "README.md"
 license = { text = "MIT" }

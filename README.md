@@ -31,14 +31,14 @@ pip install JournalPlots
 
 ```python
 import matplotlib.pyplot as plt
-from journalplots import set_style, apply_style, COLORS
+from journalplots import set_style, apply_style, cb_colors
 
 # Set the global style
 set_style(font_scale=1.0)
 
 # Create your plot
 fig, ax = plt.subplots()
-ax.plot([1, 2, 3], [1, 2, 3], color=COLORS['primary'], label='Data')
+ax.plot([1, 2, 3], [1, 2, 3], color=cb_colors()['red'], label='Data')
 apply_style(ax, title='My Plot', xlabel='X', ylabel='Y')
 plt.show()
 ```
@@ -47,15 +47,24 @@ plt.show()
 
 The package includes a colorblind-friendly palette:
 ```python
-from journalplots import COLORS
+from journalplots import cb_colors
+
+red = cb_colors()['red']
 
 # Available colors:
-# - COLORS['primary']     # Blue (#0077BB)
-# - COLORS['secondary']   # Orange (#EE7733)
-# - COLORS['tertiary']    # Teal (#009988)
-# - COLORS['quaternary']  # Red (#CC3311)
-# - COLORS['quinary']     # Cyan (#33BBEE)
-# - COLORS['gray']        # Gray (#BBBBBB)
+# - COLORBLIND_COLORS = {
+# -    "blue": "#377eb8",
+# -    "orange": "#ff7f00",
+# -    "green": "#4daf4a",
+# -    "pink": "#f781bf",
+# -    "brown": "#a65628",
+# -    "purple": "#984ea3",
+# -    "gray": "#999999",
+# -    "red": "#e41a1c",
+# -    "yellow": "#dede00",
+# }
+
+# Using set_style, subsequent plots cycle through these colorblind colors rather than the Pyplot defaults.
 ```
 
 ### Customizing Sizes

@@ -1,4 +1,8 @@
-import matplotlib.pyplot as plt
+from collections.abc import Iterator
+from typing import List
+
+import matplotlib as mpl
+from cycler import cycler
 
 # Color palette suitable for color vision deficiency
 COLORS = {
@@ -10,6 +14,17 @@ COLORS = {
     "gray": "#BBBBBB",  # Gray
 }
 
+COLORBLIND_COLORS = {
+    "blue": "#377eb8",
+    "orange": "#ff7f00",
+    "green": "#4daf4a",
+    "pink": "#f781bf",
+    "brown": "#a65628",
+    "purple": "#984ea3",
+    "gray": "#999999",
+    "red": "#e41a1c",
+    "yellow": "#dede00",
+}
 # Standard sizes for different figure elements
 SIZES = {
     "figure": (6, 4),  # Standard figure size in inches
@@ -20,7 +35,19 @@ SIZES = {
 }
 
 
-def set_style(font_scale=1.0):
+def cb_colors_list() -> List[str]:
+    return list(COLORBLIND_COLORS.values())
+
+
+def cb_colors_iter() -> Iterator[str]:
+    return iter(COLORBLIND_COLORS.values())
+
+
+def cb_colors() -> dict[str, str]:
+    return COLORBLIND_COLORS
+
+
+def set_style(font_scale=1.0) -> None:
     """
     Set the default style for all subsequent plots.
 
@@ -29,39 +56,43 @@ def set_style(font_scale=1.0):
     font_scale : float
         Scale factor for all font sizes (default: 1.0)
     """
-    plt.style.use("seaborn-v0_8-whitegrid")
+    # set for mpl
+    mpl.style.use("seaborn-v0_8-whitegrid")
 
     # Set font properties
-    plt.rcParams["font.family"] = "sans-serif"
-    plt.rcParams["font.sans-serif"] = ["Arial"]
-    plt.rcParams["font.size"] = SIZES["font"]["medium"] * font_scale
+    mpl.rcParams["font.family"] = "sans-serif"
+    mpl.rcParams["font.sans-serif"] = ["Arial"]
+    mpl.rcParams["font.size"] = SIZES["font"]["medium"] * font_scale
 
     # Set figure properties
-    plt.rcParams["figure.figsize"] = SIZES["figure"]
-    plt.rcParams["figure.dpi"] = 300
+    mpl.rcParams["figure.figsize"] = SIZES["figure"]
+    mpl.rcParams["figure.dpi"] = 300
 
     # Set axes properties
-    plt.rcParams["axes.linewidth"] = SIZES["linewidth"]
-    plt.rcParams["axes.labelsize"] = SIZES["font"]["large"] * font_scale
-    plt.rcParams["axes.titlesize"] = SIZES["font"]["xlarge"] * font_scale
+    mpl.rcParams["axes.linewidth"] = SIZES["linewidth"]
+    mpl.rcParams["axes.labelsize"] = SIZES["font"]["large"] * font_scale
+    mpl.rcParams["axes.titlesize"] = SIZES["font"]["xlarge"] * font_scale
 
     # Set tick properties
-    plt.rcParams["xtick.major.size"] = SIZES["tick_length"]
-    plt.rcParams["ytick.major.size"] = SIZES["tick_length"]
-    plt.rcParams["xtick.labelsize"] = SIZES["font"]["medium"] * font_scale
-    plt.rcParams["ytick.labelsize"] = SIZES["font"]["medium"] * font_scale
+    mpl.rcParams["xtick.major.size"] = SIZES["tick_length"]
+    mpl.rcParams["ytick.major.size"] = SIZES["tick_length"]
+    mpl.rcParams["xtick.labelsize"] = SIZES["font"]["medium"] * font_scale
+    mpl.rcParams["ytick.labelsize"] = SIZES["font"]["medium"] * font_scale
 
     # Set legend properties
-    plt.rcParams["legend.fontsize"] = SIZES["font"]["small"] * font_scale
-    plt.rcParams["legend.frameon"] = True
-    plt.rcParams["legend.edgecolor"] = "gray"
+    mpl.rcParams["legend.fontsize"] = SIZES["font"]["small"] * font_scale
+    mpl.rcParams["legend.frameon"] = True
+    mpl.rcParams["legend.edgecolor"] = "gray"
 
     # Set grid properties
-    plt.rcParams["grid.linewidth"] = 0.5
-    plt.rcParams["grid.alpha"] = 0.3
+    mpl.rcParams["grid.linewidth"] = 0.5
+    mpl.rcParams["grid.alpha"] = 0.3
+
+    # Set the color cycler
+    mpl.rcParams["axes.prop_cycle"] = cycler("color", cb_colors_list())
 
 
-def apply_style(ax, title=None, xlabel=None, ylabel=None, legend=True):
+def apply_style(ax, title=None, xlabel=None, ylabel=None, legend=True) -> None:
     """
     Apply the journal style to a specific axes object.
 
