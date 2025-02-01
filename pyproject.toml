@@ -1,14 +1,11 @@
 [project]
 name = "journalplots"
-version = "0.1.0"
+dynamic = ["version"]
 description = "A package for consistent journal-ready matplotlib plotting styles"
 authors = [
 	{ name = "Baljyot Singh Parmar", email = "baljyotparmar@hotmail.com" },
 ]
-dependencies = [
-    "cycler>=0.12.1",
-    "matplotlib>=3.0.0",
-]
+dependencies = ["cycler>=0.12.1", "matplotlib>=3.0.0"]
 requires-python = ">=3.8"
 readme = "README.md"
 license = { text = "MIT" }
@@ -21,6 +18,7 @@ classifiers = [
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
-
+[tool.hatch.version]
+path = "journalplots/__init__.py"
 [tool.hatch.build.targets.wheel]
 packages = ["journalplots"]
