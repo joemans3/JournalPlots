@@ -16,7 +16,7 @@ Features:
 
 from .style import COLORBLIND_COLORS, SIZES, apply_style, set_style
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __author__ = "Baljyot Singh Parmar"
 __email__ = "baljyotparmar@hotmail.com"
 
